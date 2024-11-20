@@ -4,8 +4,8 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     server: {
-        host: '0.0.0.0',  // Allow access from outside the container
-        port: 4173,
+        host: '0.0.0.0',   // Make it accessible from outside the container
+        port: 4173 
     },
     plugins: [
         laravel({

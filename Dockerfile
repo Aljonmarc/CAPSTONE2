@@ -5,22 +5,19 @@ FROM node:16
 WORKDIR /app
 
 # Copy package.json and package-lock.json (if present)
-COPY package*.json ./
+COPY package*.json ./ 
 
 # Install dependencies
 RUN npm install
 
 # Copy the rest of the application files
-COPY . .
+COPY . . 
 
-# Run the build command for production
-RUN npm run build
+# Build the app for production
+RUN npm run build  # This will use the 'build' script you defined in package.json
 
 # Expose the port your app will run on
-EXPOSE 10000
+EXPOSE 4173  # Port 4173 is detected by Render
 
-# Ensure the container listens on the correct port
-ENV PORT=10000
-
-# Serve the app after the build
-CMD ["npm", "run", "serve"]  # This will run "vite preview" to serve the production build
+# Run the preview (serve) command in production
+CMD ["npm", "run", "preview"]  # 'preview' is used in Vite for serving the built app
