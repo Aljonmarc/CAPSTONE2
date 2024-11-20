@@ -4,4 +4,5 @@ services:
     env: php
     plan: free
     buildCommand: composer install --no-dev --optimize-autoloader
-    startCommand: php artisan serve --host 0.0.0.0 --port 80
+    startCommand: heroku-php-apache2 public/
+
