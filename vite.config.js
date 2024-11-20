@@ -17,4 +17,20 @@ export default defineConfig({
             },
         }),
     ],
+    build: {
+        rollupOptions: {
+            output: {
+                // Manually split vendor code into a separate chunk
+                manualChunks: {
+                    vendor: [
+                        'vue',
+                        '@inertiajs/vue3',
+                        'ziggy-js',
+                        'element-plus',
+                    ],
+                },
+            },
+        },
+        chunkSizeWarningLimit: 1000, // Adjust chunk size warning limit if needed
+    },
 });
