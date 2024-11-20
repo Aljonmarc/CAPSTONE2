@@ -13,17 +13,20 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
+COPY .env .env
+
+
 # Run the build command for production
-RUN npm run build  # This will use the 'build' script you defined in package.json
+RUN npm run build
 
 # Expose the port your app will run on
 EXPOSE 4173
 
-
-
+# Set the APP_URL environment variable
+ENV APP_URL=https://surigao-health-services.onrender.com
 
 # Ensure the container listens on the correct port
 ENV PORT=4173
 
+# Run the development server (ensure this is the correct command for your app)
 CMD ["npm", "run", "dev"]
-
