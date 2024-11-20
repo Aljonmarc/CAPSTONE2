@@ -1,7 +1,7 @@
-# Use PHP image with FPM
-FROM php:8.1-fpm
+# Use PHP 8.3 FPM as base image
+FROM php:8.3-fpm
 
-# Install necessary dependencies
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -17,13 +17,13 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /var/www
 
-# Copy the application code to the container
+# Copy application files
 COPY . .
 
-# Install PHP dependencies using Composer
+# Install Composer dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Install Node.js and build assets
@@ -32,8 +32,8 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && npm install \
     && npm run prod
 
-# Expose port 80 for web traffic
+# Expose port 80
 EXPOSE 80
 
-# Run PHP FPM
+# Start PHP-FPM
 CMD ["php-fpm"]
