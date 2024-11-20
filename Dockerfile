@@ -1,39 +1,23 @@
-# Use PHP 8.3 FPM as base image
-FROM php:8.3-fpm
+# Use a Node.js base image
+FROM node:16
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json (if present)
+COPY package*.json ./
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip \
-    git \
-    curl
+RUN npm install
 
-# Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Set working directory
-WORKDIR /var/www
-
-# Copy application files
+# Copy the rest of the application files
 COPY . .
 
-# Install Composer dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Run the build command for production
+RUN npm run build  # This will use the 'build' script you defined in package.json
 
-# Install Node.js and build assets
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install \
-    && npm run prod
+# Expose the port your app will run on (optional, depending on your app)
+EXPOSE 3000
 
-# Expose port 80
-EXPOSE 80
-
-# Start PHP-FPM
-CMD ["php-fpm"]
+# Start the application
+CMD ["npm", "run", "dev"]  # This starts the dev server; adjust if you're deploying for production
