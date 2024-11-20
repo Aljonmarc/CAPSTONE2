@@ -13,8 +13,6 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
-
-
 # Run the build command for production
 RUN npm run build
 
