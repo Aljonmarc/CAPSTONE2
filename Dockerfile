@@ -11,13 +11,16 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the application files
-COPY . . 
+COPY . .
 
-# Build the app for production
+# Run the build command for production
 RUN npm run build  # This will use the 'build' script you defined in package.json
 
 # Expose the port your app will run on
-EXPOSE 4173  # Port 4173 is detected by Render
+EXPOSE 4173
 
-# Run the preview (serve) command in production
-CMD ["npm", "run", "preview"]  # 'preview' is used in Vite for serving the built app
+# Ensure the container listens on the correct port
+ENV PORT=4173
+
+# Run the preview command in production
+CMD ["npm", "run", "preview"]
