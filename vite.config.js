@@ -5,8 +5,8 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
     server: {
         host: '0.0.0.0',   // Allow access from outside the container
-        port: 5173          // Make sure this port matches the port exposed in Docker
-      },
+        port: process.env.PORT || 5173,  // Set the port based on environment variable (Render uses PORT)
+    },
     plugins: [
         laravel({
             input: 'resources/js/app.js',
@@ -24,7 +24,7 @@ export default defineConfig({
     build: {
         rollupOptions: {
             output: {
-                // Manually split vendor code into a separate chunk
+                // Split the vendor code into a separate chunk
                 manualChunks: {
                     vendor: [
                         'vue',
