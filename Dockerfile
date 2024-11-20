@@ -19,8 +19,11 @@ RUN npm run build  # This will use the 'build' script you defined in package.jso
 # Expose the port your app will run on
 EXPOSE 4173
 
+
+
+
 # Ensure the container listens on the correct port
 ENV PORT=4173
 
-# Run the preview command in production
-CMD ["npm", "run", "preview"]
+CMD ["npm", "run", "dev"]
+
