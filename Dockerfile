@@ -19,8 +19,7 @@ RUN npm run build  # This will use the 'build' script you defined in package.jso
 # Expose the port your app will run on
 EXPOSE 4173
 
-# Set the APP_URL environment variable (you can customize this value)
-ENV APP_URL=https://surigao-health-services.onrender.com
+
 
 
 # Ensure the container listens on the correct port
