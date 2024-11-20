@@ -14,8 +14,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql gd zip \
     && apt-get clean
-
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+    chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 
 # Install Composer globally
