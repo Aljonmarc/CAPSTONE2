@@ -14,15 +14,13 @@ RUN npm install
 COPY . .
 
 # Run the build command for production
-RUN npm run build  # This will use the 'build' script you defined in package.json
+RUN npm run build
 
-# Expose the port your app will run on (use the correct port for your app)
-EXPOSE 5173
+# Expose the port your app will run on
+EXPOSE 10000
 
 # Ensure the container listens on the correct port
 ENV PORT=10000
 
-# Run the production build if the app has a serve command, or use another command to serve the build
-CMD ["npm", "run", "serve"]  # Serve the production build
-
-
+# Serve the app after the build
+CMD ["npm", "run", "serve"]  # This will run "vite preview" to serve the production build
