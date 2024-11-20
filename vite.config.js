@@ -4,8 +4,11 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     server: {
-        host: '0.0.0.0',   // Make it accessible from outside the container
-        port: 4173 
+        host: '0.0.0.0',
+        port: 4173,
+        hmr: {
+            timeout: 30000,  // 30 seconds timeout
+        },
     },
     plugins: [
         laravel({

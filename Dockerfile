@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql gd zip \
     && apt-get clean
 
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+
 # Install Composer globally
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
@@ -49,6 +52,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Expose the port your application runs on
 EXPOSE 8000
 
+
+
 # Set the environment variables (update APP_URL and other env vars as needed)
 ENV APP_ENV=production
 ENV APP_KEY=base64:your-app-key-here
@@ -59,6 +64,8 @@ ENV DB_PORT=3306
 ENV DB_DATABASE=your-database
 ENV DB_USERNAME=your-username
 ENV DB_PASSWORD=your-password
+
+ENV NODE_ENV=production
 
 # Start the Laravel application
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
