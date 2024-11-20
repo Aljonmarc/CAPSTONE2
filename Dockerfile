@@ -17,7 +17,13 @@ COPY . .
 RUN npm run build  # This will use the 'build' script you defined in package.json
 
 # Expose the port your app will run on (optional, depending on your app)
-EXPOSE 3000
+EXPOSE 5173
 
-# Start the application
-CMD ["npm", "run", "dev"]  # This starts the dev server; adjust if you're deploying for production
+# Ensure the container listens on the correct port
+ENV PORT=10000
+
+
+CMD ["npm", "run", "serve"]  # Or the appropriate command to serve built files
+
+
+
