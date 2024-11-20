@@ -5,7 +5,9 @@ import { createApp, h } from 'vue';
 import FontAwesomeIcon from './fontawesome'; // import fontawesome config file
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import { ZiggyVue } from 'ziggy-js';
+
+
 
 import '@fortawesome/fontawesome-free/css/all.css';
 
