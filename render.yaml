@@ -4,5 +4,4 @@ services:
     env: php
     plan: free
     buildCommand: composer install --no-dev --optimize-autoloader
-    startCommand: heroku-php-apache2 public/
-
+    startCommand: php artisan migrate --force && php artisan cache:clear && php artisan config:cache && php-fpm
