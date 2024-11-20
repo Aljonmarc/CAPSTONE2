@@ -1,12 +1,11 @@
 {
     "private": true,
     "type": "module",
- "scripts": {
-    "dev": "vite",         
-    "build": "vite build",     
-    "preview": "vite preview" 
-},
-
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
@@ -27,7 +26,7 @@
         "@heroicons/vue": "^2.1.5",
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/inertia-vue3": "^0.6.0",
-        "element-plus": "^2.8.4",
+        "element-plus": "^2.8.8",
         "primeicons": "^7.0.0",
         "primevue": "^4.1.0",
         "vue-sweetalert2": "^5.0.11",
