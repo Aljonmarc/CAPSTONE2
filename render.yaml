@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: Surigao Health
-    env: php
-    plan: free
-    buildCommand: composer install --no-dev --optimize-autoloader
-    startCommand: php artisan migrate --force && php artisan cache:clear && php artisan config:cache && php-fpm
