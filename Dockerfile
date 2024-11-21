@@ -38,6 +38,6 @@ RUN chown -R www-data:www-data /var/www/html \
 # Expose necessary ports
 EXPOSE 80
 
-# Use Nginx with PHP-FPM
-COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
 CMD ["php-fpm"]
